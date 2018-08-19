@@ -1,14 +1,14 @@
 package com.hrisko.amdb.models;
 
 public class Movie {
-    private String id;
-    private String cast;
-    private String director;
-    private float imdbRating;
-    private int metascore;
-    private String storyline;
-    private String title_eng;
-    private int year;
+    public String id;
+    public String cast;
+    public String director;
+    public float imdbRating;
+    public int metascore;
+    public String storyline;
+    public String title_eng;
+    public int year;
 
     public Movie() {
         //Required empty constructor.
