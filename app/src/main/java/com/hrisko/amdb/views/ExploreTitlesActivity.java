@@ -1,6 +1,5 @@
 package com.hrisko.amdb.views;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,10 +17,10 @@ import com.hrisko.amdb.models.Movie;
 import java.util.List;
 
 public class ExploreTitlesActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
-
-    ListView listView;
-    SearchView searchView;
-    ArrayAdapter<String> adapter;
+//ArrayList<Movie> movies;
+    ListView mListView;
+    SearchView mSearchView;
+    ArrayAdapter<String> mAdapter;
     private FirebaseFirestore mDataBase;
 
     @Override
@@ -29,13 +28,12 @@ public class ExploreTitlesActivity extends AppCompatActivity implements SearchVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_explore_titles);
 
-        listView = (ListView) findViewById(R.id.lv_movies);
-        searchView = (SearchView) findViewById(R.id.sv_search_movies);
+        mListView = (ListView) findViewById(R.id.lv_movies);
+        mSearchView = (SearchView) findViewById(R.id.sv_search_movies);
 
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
-        listView.setAdapter(adapter);
-        searchView.setOnQueryTextListener(this);
-        
+        mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1);
+        mListView.setAdapter(mAdapter);
+        mSearchView.setOnQueryTextListener(this);
 
         mDataBase = FirebaseFirestore.getInstance();
         mDataBase.collection("movies")
@@ -46,7 +44,7 @@ public class ExploreTitlesActivity extends AppCompatActivity implements SearchVi
                         List<Movie> moviesList = task.getResult().toObjects(Movie.class);
 
                         for (Movie movie : moviesList) {
-                            adapter.add(movie.title_eng);
+                            mAdapter.add(movie.title_eng);
                         }
                     }
                 });
@@ -60,7 +58,7 @@ public class ExploreTitlesActivity extends AppCompatActivity implements SearchVi
 
     @Override
     public boolean onQueryTextChange(String text) {
-        adapter.getFilter().filter(text);
+        mAdapter.getFilter().filter(text);
         return false;
     }
 }

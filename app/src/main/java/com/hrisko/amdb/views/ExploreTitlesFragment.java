@@ -13,12 +13,12 @@ import com.hrisko.amdb.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MovieDetailsFragment.OnFragmentInteractionListener} interface
+ * {@link ExploreTitlesFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link MovieDetailsFragment#newInstance} factory method to
+ * Use the {@link ExploreTitlesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MovieDetailsFragment extends Fragment {
+public class ExploreTitlesFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -30,7 +30,7 @@ public class MovieDetailsFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public MovieDetailsFragment() {
+    public ExploreTitlesFragment() {
         // Required empty public constructor
     }
 
@@ -40,10 +40,17 @@ public class MovieDetailsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MovieDetailsFragment.
+     * @return A new instance of fragment ExploreTitlesFragment.
      */
     // TODO: Rename and change types and number of parameters
-
+    public static ExploreTitlesFragment newInstance(String param1, String param2) {
+        ExploreTitlesFragment fragment = new ExploreTitlesFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,7 +65,7 @@ public class MovieDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movie_details, container, false);
+        return inflater.inflate(R.layout.fragment_explore_titles, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -83,10 +90,6 @@ public class MovieDetailsFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-    public static MovieDetailsFragment newInstance() {
-        return  new MovieDetailsFragment();
     }
 
     /**

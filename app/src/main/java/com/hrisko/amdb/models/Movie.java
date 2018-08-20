@@ -9,9 +9,10 @@ public class Movie {
     public String storyline;
     public String title_eng;
     public int year;
+    public int image;
 
     public Movie() {
-        //Required empty constructor.
+
     }
 
     public Movie( String cast, String director, float imdbRating, int metascore, String storyline, String title_eng, int year) {
@@ -24,7 +25,7 @@ public class Movie {
         this.year = year;
     }
 
-    public String getCast() {
+    /*public String getCast() {
         return cast;
     }
 
@@ -86,7 +87,7 @@ public class Movie {
 
     public void setId(String id) {
         this.id = id;
-    }
+    }*/
 
     @Override
     public String toString() {
